@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JumpStart</title>
 </head>
-<body onclick="marcar_tempo()">
+<body onmousedown="marcar_tempo()" onclick="iniciar()">
     <div id="semaforo">
         <div id="luz1" class="luz"></div>
         <div id="luz2" class="luz"></div>
@@ -24,40 +24,59 @@
 
     let temporizador = document.getElementById("temporizador");
 
-    let start_time = 5000 + (Math.random() * 3000)
+    let start_time = 4000 + (Math.random() * 3000)
 
     let timestamp_start = 0;
     let timestamp_end = 0;
 
+    const off_light = "#000000";
+    const red_light = "#FF0000";
+    const green_light = "#00FF00";
 
+    function reset() {
+        timestamp_start = 0;
+        let luzes = document.getElementsByClassName("luz");
 
-    function marcar_tempo() {
+        for (let i = 0; i < luzes.length; i++) {
+            luzes[i].style.backgroundColor = off_light;
+        }
+
+    }
+
+    function iniciar() {
         if (!started) {
+            reset();
             temporizador.style.display = "none";
             started = true;
 
-            setTimeout(() => {luz1.style.backgroundColor = "#FF0000";}, 1000);
-            setTimeout(() => {luz2.style.backgroundColor = "#FF0000";}, 2000);
-            setTimeout(() => {luz3.style.backgroundColor = "#FF0000";}, 3000);
-            setTimeout(() => {luz4.style.backgroundColor = "#FF0000";}, 4000);
+            setTimeout(() => {luz1.style.backgroundColor = red_light;}, 0000);
+            setTimeout(() => {luz2.style.backgroundColor = red_light;}, 1000);
+            setTimeout(() => {luz3.style.backgroundColor = red_light;}, 2000);
+            setTimeout(() => {luz4.style.backgroundColor = red_light;}, 3000);
 
             setTimeout(() => {
-                luz1.style.backgroundColor = "#000000";
-                luz2.style.backgroundColor = "#000000";
-                luz3.style.backgroundColor = "#000000";
-                luz4.style.backgroundColor = "#000000";
+                luz1.style.backgroundColor = green_light;
+                luz2.style.backgroundColor = green_light;
+                luz3.style.backgroundColor = green_light;
+                luz4.style.backgroundColor = green_light;
                 timestamp_start = Date.now();
             }, start_time);
-        }
-        else {
+        } else {
                 if (timestamp_start > 0) {
-                timestamp_end = Date.now()
+                    started = false;
+                }
+        }
+    }
+
+    function marcar_tempo() {
+        if (started) {
+                if (timestamp_start > 0) {
+                timestamp_end = Date.now();
 
                 temporizador.style.display = "block";
                 temporizador.innerHTML = `Você reagiu em ${(timestamp_end - timestamp_start) / 1000} segundos!`;
             }
         }
-        
     }
 </script>
 <style>
