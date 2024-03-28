@@ -1,0 +1,6 @@
+[submodule "college/jumpstart"]
+	path = college/jumpstart
+	url = git@github.com:kettlovahr/jumpstart
+[submodule "college/checkerboard"]
+	path = college/checkerboard
+	url = git@github.com:kettlovahr/checkerboard
