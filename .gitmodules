@@ -4,3 +4,6 @@
 [submodule "college/checkerboard"]
 	path = college/checkerboard
 	url = git@github.com:kettlovahr/checkerboard
+[submodule "college/tictactoe"]
+	path = college/tictactoe
+	url = https://github.com/kettlovahr/tictactoe.git
