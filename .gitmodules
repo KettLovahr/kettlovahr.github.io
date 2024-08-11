@@ -7,3 +7,7 @@
 [submodule "college/tictactoe"]
 	path = college/tictactoe
 	url = https://github.com/kettlovahr/tictactoe.git
+[submodule "college/fmco-calc"]
+	path = college/fmco-calc
+	url = https://github.com/kettlovahr/fmco-calc.git
+
